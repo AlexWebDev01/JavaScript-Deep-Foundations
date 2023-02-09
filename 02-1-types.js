@@ -136,3 +136,18 @@ formatTrend(3); // "<- 3"
 formatTrend(-0); // "-> 0"
 formatTrend(0); // "<- 0"
 
+
+// Also we have FUNDAMENTALS OBJECTS
+// aka: Built-In Objects
+// aka: Native Functions
+
+// NEW keyword use with: Object(), Array(), Function(), Date(), RegExp(), Error()
+// Don't use NEW with: String(), Number(), Boolean()
+
+let yestarday = new Date("March 6, 2019");
+yestarday.toUTCString();
+// "Wed, 6 Mar 2019 06:00:00 GMT"
+
+let myGPA = String(transcript.gpa);
+// 3.54
+

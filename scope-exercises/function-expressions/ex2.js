@@ -1,26 +1,34 @@
-var getStudentFromId = studentId => studentRecords.find(record => record.id == studentId);
-
-var printRecords = recordIds =>
-	recordIds.map(getStudentFromId)
-		.sort(
-			(record1,record2) => record1.name < record2.name ? -1 : record1.name > record2.name ? 1 : 0
-		)
-		.forEach(record =>
-			console.log(`${record.name} (${record.id}): ${record.paid ? "Paid" : "Not Paid"}`)
-		);
-
-var paidStudentsToEnroll = () =>
-	[ ...currentEnrollment,
-		...(
-			studentRecords.filter(record => (record.paid && !currentEnrollment.includes(record.id)))
-			.map(record => record.id)
-		)
-	];
-
-var remindUnpaid = recordIds =>
-	printRecords(
-		recordIds.filter(studentId => !getStudentFromId(studentId).paid)
+const getStudentFromId = studentId =>
+	studentRecords.find(
+		record => record.id == studentId
 	);
+
+const printRecords = studentIds =>
+		studentIds.map(getStudentFromId)
+		.sort(
+			(record1,record2) => (record1.name < record2.name) ? -1 : (record1.name > record2.name) ? 1 : 0
+		)
+		.forEach(
+			record => console.log(`${record.name} (${record.id}): ${record.paid ? "Paid" : "Not Paid"}`)
+		)
+
+const paidStudentsToEnroll = () => [
+	...currentEnrollment,
+	...(
+		studentRecords.filter(
+			record => record.paid && !currentEnrollment.includes(record.id)
+		)
+		.map(record => record.id)
+	)
+];
+
+const remindUnpaid = recordIds => 
+	printRecords(
+	recordIds.filter(
+		studentId => !getStudentFromId(studentId).paid
+	)
+)
+
 
 
 // ********************************
